@@ -1,0 +1,11 @@
+<h1>Olympics Participation</h1>
+<ul class="olympics">
+  <li *ngFor="let olympic of olympics">
+    <button type="button" [class.selected]="olympic === selectedOlympic" (click)="onSelect(olympic)">
+      <span>{{olympic.id}}</span>
+      <span>{{olympic.country}}</span>
+    </button>
+  </li>
+</ul>
+  <app-participation *ngFor="let item of participations" [participation]="item"></app-participation>
+
