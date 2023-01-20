@@ -7,9 +7,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {ParticipationComponent} from "./components/participation/participation.component";
 import {OlympicComponent} from "./components/olympic/olympic.component";
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent,ParticipationComponent, OlympicComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent,ParticipationComponent, OlympicComponent, MessagesComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
