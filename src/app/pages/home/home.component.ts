@@ -11,7 +11,6 @@ import {Olympic} from "../../core/models/Olympic";
 })
 export class HomeComponent implements OnInit {
   public olympics$!: Observable<any>;
-  private olympicTable!: Olympic[];
 
   constructor(private olympicService: OlympicService) {}
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Participation} from "../../core/models/Participation";
 
 @Component({
@@ -8,5 +8,5 @@ import {Participation} from "../../core/models/Participation";
 })
 export class ParticipationComponent {
 
-
+  @Input() participation ?: Participation;
 }

@@ -1,7 +1,4 @@
 <h2>Olympic games app</h2>
 <hr />
 <p>{{ (olympics$ | async)?.length }} data loaded</p>
-<div *ngFor="let olympic of olympics$ | async">
-  <p>{{olympic.id}}</p>
-  <p>{{olympic.country}}</p>
-</div>
+<app-olympic></app-olympic>
