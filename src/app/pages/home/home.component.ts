@@ -10,7 +10,7 @@ import {Olympic} from "../../core/models/Olympic";
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$!: Observable<any>;
+  public olympics$!: Observable<Olympic[]>;
 
   constructor(private olympicService: OlympicService) {}
 

@@ -24,8 +24,13 @@ export class OlympicComponent implements OnInit {
     this.getOlympics();
   }
 
+  private log(message: string) {
+    this.messageService.add(`OlympicComponent: ${message}`);
+  }
+
   getOlympics(): void {
     // async with Observable
+    this.log('gathering olympics from service');
     this.olympicService.getOlympics().subscribe(olympics => this.olympics = olympics);
     // sync without Observable
     // this.olympics = this.olympicService.getOlympicTable();
@@ -33,7 +38,7 @@ export class OlympicComponent implements OnInit {
 
   onSelect(olympic: Olympic) {
     this.selectedOlympic = olympic;
-    this.messageService.add(`OlympicComponent: Selected olympic info from country=${olympic.country}`);
+    this.log(`Selected olympic info from country=${olympic.country}`);
     this.participations = olympic.participations;
   }
 
