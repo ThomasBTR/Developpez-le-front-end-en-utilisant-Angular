@@ -35,11 +35,4 @@ export class OlympicComponent implements OnInit {
     // sync without Observable
     // this.olympics = this.olympicService.getOlympicTable();
   }
-
-  onSelect(olympic: Olympic) {
-    this.selectedOlympic = olympic;
-    this.log(`Selected olympic info from country=${olympic.country}`);
-    this.participations = olympic.participations;
-  }
-
 }

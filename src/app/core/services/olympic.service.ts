@@ -78,6 +78,14 @@ export class OlympicService {
         this.handleError<Olympic>(`getHero id=${id}`)
       ));
   }
+  // getOlympic(country: string): Observable<Olympic> {
+  //   const url = `${this.olympicUrl}/?country=${country}`;
+  //   return this.http.get<Olympic>(url).pipe(
+  //     tap(value => this.log(`fetched olympic with country=${country}`)),
+  //     catchError(
+  //       this.handleError<Olympic>(`getHero country=${country}`)
+  //     ));
+  // }
 
   /**
    * Handle Http operation that failed.
