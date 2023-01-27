@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { OlympicService } from 'src/app/core/services/olympic.service';
-import {OlympicComponent} from "../../components/olympic/olympic.component";
+import {Component, OnInit} from '@angular/core';
+import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
+import {Participation} from "../../core/models/Participation";
 
 @Component({
   selector: 'app-home',
@@ -10,11 +9,50 @@ import {Olympic} from "../../core/models/Olympic";
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public olympics$!: Observable<Olympic[]>;
 
-  constructor(private olympicService: OlympicService) {}
+  data: any;
+
+  constructor(private olympicService: OlympicService
+              ) {
+  }
 
   ngOnInit(): void {
-    this.olympics$ = this.olympicService.getOlympics();
+    this.getOlympics();
+  }
+
+  // private log(message: string) {
+  //   this.messageService.add(`HomeComponent: ${message}`);
+  // }
+
+  getOlympics(): void {
+    // async with Observable
+    // this.log('gathering olympics from service');
+    this.olympicService.getOlympics().subscribe(
+      {
+        next: (olympicTable: Olympic[]) => {
+          const label: Array<string> = [];
+          const data: Array<number> = [];
+
+          olympicTable.forEach(olympicItem => {
+            label.push(olympicItem.country);
+            data.push(this.sumMedalCounts(olympicItem.participations));
+          });
+          this.data = {
+            labels: label,
+            datasets: [
+              {
+                data: data,
+                backgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
+                hoverBackgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
+              }
+            ]
+          };
+        }});
+  }
+
+  private sumMedalCounts(participations: Participation[]): number {
+    const result : number = participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
+    console.log(result);
+    return result;
   }
 }

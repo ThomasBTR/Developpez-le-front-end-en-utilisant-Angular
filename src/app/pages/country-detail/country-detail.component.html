@@ -1,6 +1,5 @@
 <div *ngIf="olympic">
   <h2>{{olympic.country | uppercase}} Details</h2>
   <div><span>id: </span>{{olympic.id}}</div>
-  <app-participation *ngFor="let item of participations" [participation]="item"></app-participation>
   <button type="button" (click)="goBack()">go back</button>
 </div>
