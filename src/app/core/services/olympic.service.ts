@@ -1,6 +1,6 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of} from 'rxjs';
+import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
 import {Olympic} from "../models/Olympic";
 import {MessageService} from "./message.service";
@@ -37,6 +37,17 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
+
+  //TODO: fix this method. Wont work.
+  getOlympic(id: number): Observable<Olympic> {
+    const url = `${this.olympicUrl}/?id=${id}`;
+    return this.http.get<Olympic[]>(url).pipe(
+      map(olympics => olympics[0]),
+      tap(value => this.log(`fetched olympic with id=${id}`)),
+      catchError(
+        this.handleError<Olympic>(`getHero id=${id}`)
+      ));
+  }
 
 
   /**

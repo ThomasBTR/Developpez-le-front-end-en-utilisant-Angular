@@ -32,14 +32,12 @@ export class CountryDetailComponent implements OnInit {
 //TODO: convert to chart gathering data
   private getCurrentOlympic(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.olympicService.getOlympics().subscribe(
+    this.olympicService.getOlympic(id).subscribe(
       {
-        next: (olympics: Olympic[]) => {
-
-          olympicItem: Olympic =  olympics.filter(value => value.id === id);
+        next: (olympic: Olympic) => {
           const label: Array<number> = [];
           const data: Array<number> = [];
-          olympicItem.participations.forEach(
+          olympic.participations.forEach(
             participationItem => {
               label.push(participationItem.year);
               data.push(participationItem.medalsCount);
