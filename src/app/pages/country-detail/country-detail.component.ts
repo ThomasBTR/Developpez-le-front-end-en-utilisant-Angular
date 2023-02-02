@@ -26,7 +26,7 @@ export class CountryDetailComponent implements OnInit {
     this.getCurrentOlympic();
   }
 
-
+//TODO: convert to chart gathering data
   private getCurrentOlympic(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
     this.olympicService.getOlympic(id).subscribe(olympic => {

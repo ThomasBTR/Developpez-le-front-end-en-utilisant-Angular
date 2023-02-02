@@ -1,2 +1,20 @@
-<h2>Olympic games app</h2>
-<app-olympic></app-olympic>
+<div class="flex justify-content-center">
+  <div class="flex flex-column align-items-center">
+    <div class="flex bg-cyan-500 font-bold border-round justify-content-center w-15rem h-8rem align-items-center text-white">Medals per Country</div>
+      <div class="flex flex-row flex-wrap">
+        <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
+          <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
+            <div class="justify-content-center align-items-center">Number of JOs</div>
+            <div class="justify-content-center align-items-center font-bold">{{joCount}}</div>
+          </div>
+        </div>
+        <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
+          <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
+            <div class="justify-content-center align-items-center">Number of countries</div>
+            <div class="justify-content-center align-items-center font-bold">{{countryCount}}</div>
+          </div>
+        </div>
+      </div>
+    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="80vh"></p-chart>
+  </div>
+</div>

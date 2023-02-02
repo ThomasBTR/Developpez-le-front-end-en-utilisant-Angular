@@ -9,20 +9,8 @@ import {MessageService} from "./message.service";
   providedIn: 'root',
 })
 export class OlympicService {
-  private olympicUrl = 'api/olympics';
-  private olympics$ = new BehaviorSubject<Olympic>({
-    id: 1,
-    country: 'Italy',
-    participations: [
-      {
-        id: 1,
-        year: 2012,
-        city: "Londres",
-        medalsCount: 28,
-        athleteCount: 372
-      }
-    ]
-  });
+  private olympicUrl = './assets/mock/olympic.json';
+  private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
@@ -32,42 +20,21 @@ export class OlympicService {
   }
 
   loadInitialData() {
-    return this.http.get<Olympic>(this.olympicUrl).pipe(
+    return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
         // TODO: improve error handling
-        if (error) {
-          this.olympics$.unsubscribe();
-          console.error(error);
-          throw new Error(error);
-        }
+        console.error(error);
+        //TODO: renvoyer vers la page d'error notFound.comp
         // can be useful to end loading state and let the user know something went wrong
+        this.olympics$.next([]);
         return caught;
       })
     );
   }
 
-  //Method with a mock of Olympic
-  // getOlympics() : Observable<Olympic[]>{
-  //   const olympics = of(OLYMPICS);
-  //   this.log('OlympicService: fetched olympics');
-  //   return olympics;
-  // }
-
-
-  //Gather data from olympicMockDataServer from databases/InMemoryDataService
-  getOlympics(): Observable<Olympic[]> {
-    return this.http.get<Olympic[]>(this.olympicUrl)
-      .pipe(
-        tap(
-          (value) => this.log('fetched olympics')),
-        catchError((error, caught) => {
-          if (error) {
-            this.handleError<Olympic[]>('get Olympics', []);
-          }
-          return caught;
-        })
-      );
+  getOlympics() {
+    return this.olympics$.asObservable();
   }
 
   getOlympic(id: number): Observable<Olympic> {
@@ -78,14 +45,7 @@ export class OlympicService {
         this.handleError<Olympic>(`getHero id=${id}`)
       ));
   }
-  // getOlympic(country: string): Observable<Olympic> {
-  //   const url = `${this.olympicUrl}/?country=${country}`;
-  //   return this.http.get<Olympic>(url).pipe(
-  //     tap(value => this.log(`fetched olympic with country=${country}`)),
-  //     catchError(
-  //       this.handleError<Olympic>(`getHero country=${country}`)
-  //     ));
-  // }
+
 
   /**
    * Handle Http operation that failed.
@@ -107,8 +67,4 @@ export class OlympicService {
       return of(result as T);
     };
   }
-
-  // getOlympics() {
-  //   return this.olympics$.asObservable();
-  // }
 }
