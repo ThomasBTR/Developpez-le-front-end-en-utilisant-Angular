@@ -37,14 +37,6 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  getOlympic(id: number): Observable<Olympic> {
-    const url = `${this.olympicUrl}/${id}`;
-    return this.http.get<Olympic>(url).pipe(
-      tap(value => this.log(`fetched olympic with id=${id}`)),
-      catchError(
-        this.handleError<Olympic>(`getHero id=${id}`)
-      ));
-  }
 
 
   /**

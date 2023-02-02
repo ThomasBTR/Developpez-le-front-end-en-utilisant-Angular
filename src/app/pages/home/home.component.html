@@ -1,7 +1,7 @@
 <div class="flex justify-content-center">
   <div class="flex flex-column align-items-center">
     <div class="flex bg-cyan-500 font-bold border-round justify-content-center w-15rem h-8rem align-items-center text-white">Medals per Country</div>
-      <div class="flex flex-row flex-wrap">
+      <div class="flex flex-row">
         <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
           <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
             <div class="justify-content-center align-items-center">Number of JOs</div>
@@ -15,6 +15,6 @@
           </div>
         </div>
       </div>
-    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="80vh"></p-chart>
+    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="80vh" (onDataSelect)="getCountry($event)"></p-chart>
   </div>
 </div>

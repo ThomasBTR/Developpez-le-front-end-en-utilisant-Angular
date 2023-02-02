@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
 import {Participation} from "../../core/models/Participation";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,8 +17,8 @@ export class HomeComponent implements OnInit {
   joCount!: number;
   countryCount !: number;
 
-  constructor(private olympicService: OlympicService
-  ) {
+  constructor(private olympicService: OlympicService,
+              private router : Router) {
   }
 
   ngOnInit(): void {
@@ -71,5 +72,15 @@ export class HomeComponent implements OnInit {
     const result: number = participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
     console.log(result);
     return result;
+  }
+
+  getCountry(e: any): void{
+    console.log(e)
+    console.log(e.dataset);
+    console.log(e.element);
+    console.log(e.element.index);
+    const index : number = e.element.index+1;
+
+   this.router.navigateByUrl(`/detail/${index}`);
   }
 }
