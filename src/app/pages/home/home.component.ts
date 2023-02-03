@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
 import {Participation} from "../../core/models/Participation";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit {
     console.log(e.dataset);
     console.log(e.element);
     console.log(e.element.index);
-    const index : number = e.element.index+1;
+    const index : number = e.element.index;
 
    this.router.navigateByUrl(`/detail/${index}`);
   }

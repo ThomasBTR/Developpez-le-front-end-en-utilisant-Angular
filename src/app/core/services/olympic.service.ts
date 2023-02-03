@@ -39,13 +39,12 @@ export class OlympicService {
 
 
   //TODO: fix this method. Wont work.
-  getOlympic(id: number): Observable<Olympic> {
-    const url = `${this.olympicUrl}/?id=${id}`;
-    return this.http.get<Olympic[]>(url).pipe(
-      map(olympics => olympics[0]),
-      tap(value => this.log(`fetched olympic with id=${id}`)),
+  getOlympic(index: number): Observable<Olympic> {
+    return this.http.get<Olympic[]>(this.olympicUrl).pipe(
+      map(olympics => olympics[index]),
+      tap(value => this.log(`fetched olympic with id=${index}`)),
       catchError(
-        this.handleError<Olympic>(`getHero id=${id}`)
+        this.handleError<Olympic>(`getHero id=${index}`)
       ));
   }
 

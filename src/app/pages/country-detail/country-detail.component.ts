@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Olympic} from "../../core/models/Olympic";
 import {ActivatedRoute} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
-import {Participation} from "../../core/models/Participation";
 import {Location} from '@angular/common';
 
 
@@ -13,11 +12,13 @@ import {Location} from '@angular/common';
 })
 export class CountryDetailComponent implements OnInit {
 
-
+  country!: string;
   entries!: number;
   medalsCount!: number;
   athletesCount!: number;
   data: any;
+
+  options!: any;
 
 
   constructor(private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class CountryDetailComponent implements OnInit {
     this.olympicService.getOlympic(id).subscribe(
       {
         next: (olympic: Olympic) => {
+          this.country = olympic.country;
           const label: Array<number> = [];
           const data: Array<number> = [];
           olympic.participations.forEach(
@@ -57,6 +59,21 @@ export class CountryDetailComponent implements OnInit {
           };
         }
       });
+    this.options = {
+      indexAxis: 'y',
+      plugins: {
+        title: {
+          display: true,
+          text: 'Medals per year',
+          fontColor: '#000000',
+          fontSize: 25,
+          position : 'left'
+      },
+        legend: {
+          display: false
+        }
+      }
+    }
   }
 
   goBack(): void {

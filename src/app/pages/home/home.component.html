@@ -1,6 +1,6 @@
 <div class="flex justify-content-center">
   <div class="flex flex-column align-items-center">
-    <div class="flex bg-cyan-500 font-bold border-round justify-content-center w-15rem h-8rem align-items-center text-white">Medals per Country</div>
+    <div class="flex bg-cyan-500 font-bold border-round justify-content-center w-15rem h-5rem align-items-center text-white">Medals per Country</div>
       <div class="flex flex-row">
         <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
           <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
@@ -8,13 +8,13 @@
             <div class="justify-content-center align-items-center font-bold">{{joCount}}</div>
           </div>
         </div>
-        <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
+        <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8vw h-8vh font-bold text-black">
           <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
             <div class="justify-content-center align-items-center">Number of countries</div>
             <div class="justify-content-center align-items-center font-bold">{{countryCount}}</div>
           </div>
         </div>
       </div>
-    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="80vh" (onDataSelect)="getCountry($event)"></p-chart>
+    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="70vh" (onDataSelect)="getCountry($event)"></p-chart>
   </div>
 </div>
