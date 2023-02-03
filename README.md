@@ -27,3 +27,12 @@ Once mastered, you should continue by creating the typescript interfaces inside 
 You're now ready to implement the requested features.
 
 Good luck!
+
+
+## What's new :
+
+### Security :
+* Update angular requirement to latest angular 15 version
+
+### Core : 
+* Create models for olympic & participation
