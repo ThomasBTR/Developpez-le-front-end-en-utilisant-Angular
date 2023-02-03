@@ -79,8 +79,7 @@ export class HomeComponent implements OnInit {
     console.log(e.dataset);
     console.log(e.element);
     console.log(e.element.index);
-    const index : number = e.element.index;
-
-   this.router.navigateByUrl(`/detail/${index}`);
+    const id : number = e.element.index+1;
+   this.router.navigateByUrl(`/detail/${id}`);
   }
 }

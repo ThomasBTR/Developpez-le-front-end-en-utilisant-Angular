@@ -13,9 +13,9 @@ import {Location} from '@angular/common';
 export class CountryDetailComponent implements OnInit {
 
   country!: string;
-  entries!: number;
-  medalsCount!: number;
-  athletesCount!: number;
+  entries: number = 0;
+  medalsCount: number = 0;
+  athletesCount: number = 0;
   data: any;
 
   options!: any;
