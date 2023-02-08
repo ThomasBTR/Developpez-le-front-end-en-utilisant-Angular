@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Olympic} from "../../core/models/Olympic";
 import {ActivatedRoute} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {Location} from '@angular/common';
+import {Options} from "../../core/models/Options";
+import {DataLabelNumber} from "../../core/models/DataLabelNumber";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -10,16 +13,17 @@ import {Location} from '@angular/common';
   templateUrl: './country-detail.component.html',
   styleUrls: ['./country-detail.component.scss']
 })
-export class CountryDetailComponent implements OnInit {
+export class CountryDetailComponent implements OnInit, OnDestroy {
 
   country!: string;
   entries: number = 0;
   medalsCount: number = 0;
   athletesCount: number = 0;
-  data: any;
+  data!: DataLabelNumber;
 
-  options!: any;
+  options!: Options;
 
+  subscription !: Subscription;
 
   constructor(private route: ActivatedRoute,
               private olympicService: OlympicService,
@@ -27,13 +31,33 @@ export class CountryDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getCurrentOlympic();
+    this.subscription = this.getCurrentOlympic();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 //TODO: convert to chart gathering data
-  private getCurrentOlympic(): void {
+  private getCurrentOlympic(): Subscription {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.olympicService.getOlympic(id).subscribe(
+    this.options = {
+      indexAxis: 'y',
+
+      plugins: {
+        title: {
+          display: true,
+          text: 'Medals per year',
+          fontColor: '#000000',
+          fontSize: 25,
+          position : 'left'
+        },
+        legend: {
+          display: false
+        }
+      }
+    }
+    return this.olympicService.getOlympic(id).subscribe(
       {
         next: (olympic: Olympic) => {
           this.country = olympic.country;
@@ -59,21 +83,6 @@ export class CountryDetailComponent implements OnInit {
           };
         }
       });
-    this.options = {
-      indexAxis: 'y',
-      plugins: {
-        title: {
-          display: true,
-          text: 'Medals per year',
-          fontColor: '#000000',
-          fontSize: 25,
-          position : 'left'
-      },
-        legend: {
-          display: false
-        }
-      }
-    }
   }
 
   goBack(): void {

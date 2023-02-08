@@ -10,10 +10,6 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
-  // {
-  //   path: ':country',
-  //   component: CountryDetailComponent
-  // },
   {
     path: 'detail/:id',
     component: CountryDetailComponent
