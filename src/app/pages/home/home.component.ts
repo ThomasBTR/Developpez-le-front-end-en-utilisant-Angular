@@ -75,13 +75,12 @@ export class HomeComponent implements OnInit, OnDestroy {
           };
         },
         error: err => {
-          console.log("Error on home Component creation. Error : ", err);
+          console.log("HomeComponent: Error while getting observable : ", err);
           this.subscription.unsubscribe();
-          //TODO: Route this to error page
-          // this.router.navigateByUrl("/not-found");
+          this.router.navigateByUrl("/not-found").then(r => console.log("HomeComponent: call not-found result : ", r));
         },
         complete() {
-          console.log("subscription complete");
+          console.log("HomeComponent: Observable received completely");
         }
       });
   };
