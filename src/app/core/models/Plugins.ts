@@ -1,6 +1,8 @@
-import {Title} from "chart.js";
+import {Title} from "./Title";
+import {Legend} from "./Legend";
+
 
 export interface Plugins {
-  title: Title;
-  legend: { display: boolean; };
+  title ?: Title;
+  legend?: Legend;
 }

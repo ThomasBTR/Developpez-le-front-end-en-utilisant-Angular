@@ -3,37 +3,53 @@ import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
 import {Participation} from "../../core/models/Participation";
 import {Router} from "@angular/router";
-import {Data} from "../../core/models/Data";
+import {Options} from "../../core/models/Options";
+import {DataLabelString} from "../../core/models/DataLabelString";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit, OnDestroy {
 
-  data!: Data;
-  options: any;
+  data!: DataLabelString;
+  options!: Options;
 
   joCount!: number;
   countryCount !: number;
+
+  subscription !: Subscription;
 
   constructor(private olympicService: OlympicService,
               private router : Router) {
   }
 
   ngOnInit(): void {
-    this.getOlympics();
+    this.subscription = this.getOlympics();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   // private log(message: string) {
   //   this.messageService.add(`HomeComponent: ${message}`);
   // }
 
-  getOlympics(): void {
+  getOlympics(): Subscription {
     // async with Observable
     // this.log('gathering olympics from service');
-    this.olympicService.getOlympics().subscribe(
+    this.options = {
+      plugins: {
+        legend: {
+          display: true,
+          padding: 2
+        }
+      }
+    }
+    return this.olympicService.getOlympics().subscribe(
       {
         next: (olympicTable: Olympic[]) => {
           const labels: string[] = [];
@@ -57,16 +73,17 @@ export class HomeComponent implements OnInit{
               }
             ]
           };
+        },
+        error: err => {
+          console.log("Error on home Component creation. Error : ", err);
+          this.subscription.unsubscribe();
+          //TODO: Route this to error page
+          // this.router.navigateByUrl("/not-found");
+        },
+        complete() {
+          console.log("subscription complete");
         }
       });
-    this.options = {
-      plugins: {
-        legend: {
-          display: true,
-          padding: 2
-        }
-      }
-    }
   };
 
   private sumMedalCounts(participations: Participation[]): number {
@@ -83,5 +100,4 @@ export class HomeComponent implements OnInit{
     const id : number = e.element.index+1;
    this.router.navigateByUrl(`/detail/${id}`);
   }
-
 }
