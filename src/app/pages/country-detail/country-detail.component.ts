@@ -3,6 +3,7 @@ import {Olympic} from "../../core/models/Olympic";
 import {ActivatedRoute} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {Location} from '@angular/common';
+import {Options} from "../../core/models/Options";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class CountryDetailComponent implements OnInit {
   athletesCount: number = 0;
   data: any;
 
-  options!: any;
+  options!: Options;
 
 
   constructor(private route: ActivatedRoute,
@@ -61,6 +62,7 @@ export class CountryDetailComponent implements OnInit {
       });
     this.options = {
       indexAxis: 'y',
+
       plugins: {
         title: {
           display: true,

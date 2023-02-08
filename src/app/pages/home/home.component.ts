@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {OlympicService} from 'src/app/core/services/olympic.service';
 import {Olympic} from "../../core/models/Olympic";
 import {Participation} from "../../core/models/Participation";
 import {Router} from "@angular/router";
+import {Data} from "../../core/models/Data";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
-  data: any;
+  data!: Data;
   options: any;
 
   joCount!: number;
@@ -35,22 +36,22 @@ export class HomeComponent implements OnInit {
     this.olympicService.getOlympics().subscribe(
       {
         next: (olympicTable: Olympic[]) => {
-          const label: Array<string> = [];
-          const data: Array<number> = [];
+          const labels: string[] = [];
+          const datasets: number[] = [];
 
           olympicTable.forEach(olympicItem => {
-            label.push(olympicItem.country);
-            data.push(this.sumMedalCounts(olympicItem.participations));
+            labels.push(olympicItem.country);
+            datasets.push(this.sumMedalCounts(olympicItem.participations));
             if (this.joCount !== olympicItem.participations.length) {
               this.joCount = olympicItem.participations.length;
             }
           });
-          this.countryCount = label.length;
+          this.countryCount = labels.length;
           this.data = {
-            labels: label,
+            labels: labels,
             datasets: [
               {
-                data: data,
+                data: datasets,
                 backgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
                 hoverBackgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
               }
@@ -66,7 +67,7 @@ export class HomeComponent implements OnInit {
         }
       }
     }
-  }
+  };
 
   private sumMedalCounts(participations: Participation[]): number {
     const result: number = participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
@@ -82,4 +83,5 @@ export class HomeComponent implements OnInit {
     const id : number = e.element.index+1;
    this.router.navigateByUrl(`/detail/${id}`);
   }
+
 }
