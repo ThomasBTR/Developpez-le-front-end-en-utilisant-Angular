@@ -87,7 +87,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
           console.log("CountryDetailComponent: Error while getting observable : ", err);
           this.subscription.unsubscribe();
           this.router.navigateByUrl("/not-found")
-            .then(r => console.log("CountryDetailComponent: call not-found result : ", r));
+            .then(r => console.log("CountryDetailComponent: redirect to not-found result : ", r));
         },
         complete() {
           console.log("CountryDetailComponent: Observable received completely");

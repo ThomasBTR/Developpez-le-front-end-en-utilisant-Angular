@@ -92,10 +92,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   getCountry(e: any): void{
-    console.log(e)
-    console.log(e.dataset);
-    console.log(e.element);
-    console.log(e.element.index);
+    // console.log(e)
+    // console.log(e.dataset);
+    // console.log(e.element);
+    // console.log(e.element.index);
     const id : number = e.element.index+1;
    this.router.navigateByUrl(`/detail/${id}`);
   }
