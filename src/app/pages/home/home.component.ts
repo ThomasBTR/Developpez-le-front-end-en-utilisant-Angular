@@ -86,17 +86,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   };
 
   private sumMedalCounts(participations: Participation[]): number {
-    const result: number = participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
-    console.log(result);
-    return result;
+    return participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
   }
 
   getCountry(e: any): void{
-    // console.log(e)
-    // console.log(e.dataset);
-    // console.log(e.element);
-    // console.log(e.element.index);
     const id : number = e.element.index+1;
-   this.router.navigateByUrl(`/detail/${id}`);
+   this.router.navigateByUrl(`/detail/${id}`)
+     .then(r => console.log("HomeComponent: getCountry() result : ", r));
   }
 }
