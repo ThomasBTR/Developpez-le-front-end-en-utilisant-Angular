@@ -75,29 +75,23 @@ export class HomeComponent implements OnInit, OnDestroy {
           };
         },
         error: err => {
-          console.log("Error on home Component creation. Error : ", err);
+          console.log("HomeComponent: Error while getting observable : ", err);
           this.subscription.unsubscribe();
-          //TODO: Route this to error page
-          // this.router.navigateByUrl("/not-found");
+          this.router.navigateByUrl("/not-found").then(r => console.log("HomeComponent: call not-found result : ", r));
         },
         complete() {
-          console.log("subscription complete");
+          console.log("HomeComponent: Observable received completely");
         }
       });
   };
 
   private sumMedalCounts(participations: Participation[]): number {
-    const result: number = participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
-    console.log(result);
-    return result;
+    return participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
   }
 
   getCountry(e: any): void{
-    console.log(e)
-    console.log(e.dataset);
-    console.log(e.element);
-    console.log(e.element.index);
     const id : number = e.element.index+1;
-   this.router.navigateByUrl(`/detail/${id}`);
+   this.router.navigateByUrl(`/detail/${id}`)
+     .then(r => console.log("HomeComponent: getCountry() result : ", r));
   }
 }

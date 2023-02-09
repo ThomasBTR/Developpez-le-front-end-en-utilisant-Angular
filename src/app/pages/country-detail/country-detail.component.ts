@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Olympic} from "../../core/models/Olympic";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {Location} from '@angular/common';
 import {Options} from "../../core/models/Options";
@@ -27,7 +27,8 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private olympicService: OlympicService,
-              private location: Location) {
+              private location: Location,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -81,6 +82,15 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
               }
             ]
           };
+        },
+        error: err => {
+          console.log("CountryDetailComponent: Error while getting observable : ", err);
+          this.subscription.unsubscribe();
+          this.router.navigateByUrl("/not-found")
+            .then(r => console.log("CountryDetailComponent: redirect to not-found result : ", r));
+        },
+        complete() {
+          console.log("CountryDetailComponent: Observable received completely");
         }
       });
   }
