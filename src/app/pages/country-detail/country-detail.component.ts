@@ -77,7 +77,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
             datasets: [
               {
                 data: data,
-                backgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
+                backgroundColor: ['#956065', '#B8CBE7', '#89A1DB', '#793D52', '#9780A1'],
                 hoverBackgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
               }
             ]

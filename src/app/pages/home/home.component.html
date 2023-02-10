@@ -1,20 +1,20 @@
 <div class="flex justify-content-center">
   <div class="flex flex-column align-items-center">
-    <div class="flex bg-cyan-500 font-bold border-round justify-content-center w-15rem h-5rem align-items-center text-white">Medals per Country</div>
+    <div class="title-card flex bg-cyan-500 font-bold border-round justify-content-center align-items-center text-white">Medals per Country</div>
       <div class="flex flex-row border-blue-900">
-        <div class="border-blue-900 m-5 flex align-items-center justify-content-center w-8rem h-8rem font-bold text-black">
-          <div class="border-blue-900 border-solid border-2 border-round flex align-items-center justify-content-center flex-column flex-wrap">
-            <div class="justify-content-center align-items-center m-1">Number of JOs</div>
-            <div class="justify-content-center align-items-center font-bold m-1">{{joCount}}</div>
+        <div class="m-5 flex align-items-center justify-content-center">
+          <div class="boxed-card border-solid border-3 border-round flex align-items-center justify-content-center flex-column flex-wrap">
+            <div class="flex justify-content-center align-items-center text-black-alpha-60 text-p">Number of JOs</div>
+            <div class="flex justify-content-center align-items-center font-bold text-p">{{joCount}}</div>
           </div>
         </div>
-        <div class="border-blue-900  m-2 flex align-items-center justify-content-center w-8vw h-8vh font-bold text-black">
-          <div class="border-blue-900 flex align-items-center justify-content-center flex-column flex-wrap">
-            <div class="justify-content-center align-items-center">Number of countries</div>
-            <div class="justify-content-center align-items-center font-bold">{{countryCount}}</div>
+        <div class="m-5 flex align-items-center justify-content-center">
+          <div class="boxed-card border-solid border-3 border-round flex align-items-center justify-content-center flex-column flex-wrap">
+            <div class="justify-content-center align-items-center text-black-alpha-60 text-p">Number of countries</div>
+            <div class="justify-content-center align-items-center text-black-alpha-100 font-bold text-p">{{countryCount}}</div>
           </div>
         </div>
       </div>
-    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="70vh" (onDataSelect)="getCountry($event)"></p-chart>
+    <p-chart type="pie" [data]="data" [options]="options" width="40vw" height="60vh" (onDataSelect)="getCountry($event)"></p-chart>
   </div>
 </div>
