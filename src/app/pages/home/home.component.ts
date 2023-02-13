@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {OlympicService} from 'src/app/core/services/olympic.service';
-import {Olympic} from "../../core/models/Olympic";
-import {Participation} from "../../core/models/Participation";
+import {Olympic} from "../../core/models/dataset/Olympic";
+import {Participation} from "../../core/models/dataset/Participation";
 import {Router} from "@angular/router";
-import {Options} from "../../core/models/Options";
-import {DataLabelString} from "../../core/models/DataLabelString";
+import {Options} from "../../core/models/rendering/Options";
+import {DataLabelString} from "../../core/models/rendering/DataLabelString";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   subscription !: Subscription;
 
   constructor(private olympicService: OlympicService,
-              private router : Router) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -89,9 +89,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     return participations.filter(value => value.medalsCount !== 0).reduce((previousValue, currentValue) => previousValue + currentValue.medalsCount, 0);
   }
 
-  getCountry(e: any): void{
-    const id : number = e.element.index+1;
-   this.router.navigateByUrl(`/detail/${id}`)
-     .then(r => console.log("HomeComponent: getCountry() result : ", r));
+  getCountry(e: any): void {
+    const id: number = e.element.index + 1;
+    this.router.navigateByUrl(`/detail/${id}`)
+      .then(r => console.log("HomeComponent: getCountry() result : ", r));
   }
 }

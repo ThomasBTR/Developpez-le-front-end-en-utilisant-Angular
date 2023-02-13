@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Olympic} from "../../core/models/Olympic";
+import {Olympic} from "../../core/models/dataset/Olympic";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {Location} from '@angular/common';
-import {Options} from "../../core/models/Options";
-import {DataLabelNumber} from "../../core/models/DataLabelNumber";
+import {Options} from "../../core/models/rendering/Options";
+import {DataLabelNumber} from "../../core/models/rendering/DataLabelNumber";
 import {Subscription} from "rxjs";
 
 

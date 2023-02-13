@@ -1,8 +1,8 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {Olympic} from "../models/Olympic";
+import {Olympic} from "../models/dataset/Olympic";
 import {MessageService} from "./message.service";
 
 @Injectable({
@@ -42,7 +42,7 @@ export class OlympicService {
   getOlympic(index: number): Observable<Olympic> {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       map(olympics => olympics[index-1]),
-      tap(value => this.log(`fetched olympic with id=${index}`)),
+      tap(value => this.log(`fetched olympic with id=${index}`, value)),
       catchError(
         this.handleError<Olympic>(`getHero id=${index}`)
       ));
