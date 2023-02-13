@@ -31,24 +31,17 @@ As you can see, an architecture has already been defined for the project. It is 
   - `services`folder : reusable service for business logic. <br>
   Here is currently available OlympicService, that make inital data gathered from asset folder through RxJS Observable.
   
-  - `models` folders : set basic models for both initial dataset from datatable and rendering models
-    - `dataset` : models for data gathered currently from a mock (avaible in `src/assets/mock/olympic.json`). <br> 
+  - `models` folders : set reusable typescript interfaces for both initial dataset from datatable and rendering models
+    - `dataset` : interfaces for data gathered currently from a mock (avaible in `src/assets/mock/olympic.json`). <br> 
     Will be usable with a connected database that contain object following the current models.
-    - `rendering` : models used for rendering data in a couple of chart type (pie and bar).
-
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
-
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
-
-You're now ready to implement the requested features.
-
-Good luck!
+    - `rendering` : interfaces used for rendering data in a couple of chart type (pie and bar).
 
 
 ## What's new :
 
-### Security :
+### Best Practise :
 * Update angular requirement to latest angular 15 version
+* [Angular Best Practices](https://angular.io/guide/security) implemented, especially regarding security.
 
 ### Core : 
 * Create dataset models for olympic & participation
