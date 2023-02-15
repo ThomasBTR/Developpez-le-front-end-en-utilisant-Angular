@@ -42,7 +42,7 @@ export class OlympicService {
   getOlympic(index: number): Observable<Olympic> {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       map(olympics => olympics[index-1]),
-      tap(value => this.log(`fetched olympic with id=${index}`, value)),
+      tap(value => this.log(`fetched olympic with id=${index} : value=${value}`)),
       catchError(
         this.handleError<Olympic>(`getHero id=${index}`)
       ));

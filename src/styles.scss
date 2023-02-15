@@ -9,8 +9,6 @@
   //width: 20vw;
   background: #04838f;
   margin: 1% 2%;
-  text-align:center;
-  text-size-adjust: auto;
   font-weight: bolder;
   color: white;
   border-radius: 5%;
@@ -22,22 +20,28 @@
   border-style: solid;
   border-width: thick;
   border-radius: 5%;
-  margin: 5%;
+  margin: 2%;
   padding: 5%;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  white-space: nowrap;
+  text-align:center;
+  //white-space: nowrap;
 }
 sub-card-title{
   text-size-adjust: auto;
   color: #727272;
-  margin: 10%;
 }
 .sub-card-value{
-  margin: 10%;
   //text-size-adjust: auto;
   color: black;
   font-weight: bold;
+}
+
+.pie-chart{
+  width: 40vw;
+  height: 60vh;
+}
+
+.bar-chart{
+  width: 60vw;
+  height: 65vh;
 }
 

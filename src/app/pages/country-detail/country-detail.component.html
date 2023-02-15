@@ -1,36 +1,36 @@
 <div class="card">
   <div class="flex flex-column align-items-center">
     <div
-      class="flex align-items-center justify-content-center title-card text-white border-round m-2">
+      class="title-card flex text-3xl lg:text-7xl">
       {{country}}
     </div>
-    <div class="flex flex-row  card-container blue-container">
-      <div class="sub-card flex flex-column align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2">
-        <div class="flex align-items-center justify-content-center text-white m-2 sub-card-title">
+    <div class="flex flex-row justify-content-center card-container">
+      <div class="sub-card text-base lg:text-2xl flex flex-shrink-1 sm:flex-shrink-0 flex-grow-1 flex-column align-items-center justify-content-center">
+        <div class="flex-1 align-items-center sub-card-title">
           Number of entries
         </div>
-        <div class="flex align-items-center justify-content-center font-bold text-white border-round m-2 sub-card-value">
+        <div class="flex-1 sub-card-value">
           {{entries}}
         </div>
       </div>
-      <div class="sub-card flex flex-column align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2">
-        <div class="flex align-items-center justify-content-center text-white m-2">
+      <div class="sub-card text-base lg:text-2xl flex flex-shrink-1 sm:flex-shrink-0 flex-grow-1 flex-column align-items-center justify-content-center">
+        <div class="flex-1 align-items-center sub-card-title">
           Number of Medals
         </div>
-        <div class="flex align-items-center justify-content-center font-bold text-white border-round m-2">
+        <div class="flex-1 sub-card-value">
           {{medalsCount}}
         </div>
       </div>
-      <div class="sub-card flex flex-column align-items-center justify-content-center bg-blue-500 font-bold text-white border-round m-2">
-        <div class="flex align-items-center justify-content-center text-white m-2">
+      <div class="sub-card text-base lg:text-2xl flex flex-shrink-1 sm:flex-shrink-0 flex-grow-1 flex-column align-items-center justify-content-center">
+        <div class="flex-1 align-items-center sub-card-title">
           Number of Athletes
         </div>
-        <div class="flex align-items-center justify-content-center font-bold text-white m-2">
+        <div class="flex-1 sub-card-value">
           {{athletesCount}}
         </div>
       </div>
     </div>
-    <p-chart type="bar" [data]="data" [options]="options" width="60vw" height="75vh"></p-chart>
-    <button type="button" (click)="goBack()">Go back</button>
+    <p-chart class="bar-chart" type="bar" [data]="data" [options]="options"></p-chart>
+    <button class="flex flex-auto text-lg md:text-2xl" type="button" (click)="goBack()">Go back</button>
   </div>
 </div>
