@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Olympic} from "../../core/models/Olympic";
+import {Olympic} from "../../core/models/dataset/Olympic";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {Location} from '@angular/common';
-import {Options} from "../../core/models/Options";
-import {DataLabelNumber} from "../../core/models/DataLabelNumber";
+import {Options} from "../../core/models/rendering/Options";
+import {DataLabelNumber} from "../../core/models/rendering/DataLabelNumber";
 import {Subscription} from "rxjs";
 
 
@@ -77,7 +77,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
             datasets: [
               {
                 data: data,
-                backgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
+                backgroundColor: ['#956065', '#B8CBE7', '#89A1DB', '#793D52', '#9780A1'],
                 hoverBackgroundColor: ['#42A5F5', '#66BB6A', '#FFA726', '#26C6DA', '#7E57C2'],
               }
             ]

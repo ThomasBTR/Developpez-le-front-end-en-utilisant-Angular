@@ -1,9 +1,9 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable, OnDestroy} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, map, Observable, of} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
-import {Olympic} from "../models/Olympic";
-import {MessageService} from "./message.service";
+import {Olympic} from "../models/dataset/Olympic";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -12,22 +12,15 @@ export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
-  constructor(private http: HttpClient, private messageService: MessageService) {
-  }
-
-  private log(message: string) {
-    this.messageService.add(`OlympicService: ${message}`);
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   loadInitialData() {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
-        // TODO: improve error handling
-        console.error(error);
-        //TODO: renvoyer vers la page d'error notFound.comp
-        // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next([]);
+        this.handleError("loadInitialData", error)
         return caught;
       })
     );
@@ -36,16 +29,16 @@ export class OlympicService {
   getOlympics() : Observable<Olympic[]> {
     return this.olympics$.asObservable();
   }
-
-
-  //TODO: fix this method. Wont work.
   getOlympic(index: number): Observable<Olympic> {
     return this.http.get<Olympic[]>(this.olympicUrl).pipe(
       map(olympics => olympics[index-1]),
-      tap(value => this.log(`fetched olympic with id=${index}`)),
-      catchError(
-        this.handleError<Olympic>(`getHero id=${index}`)
+      tap(value => console.log(`fetched olympic with id=${index} : value=${value}`)),
+      catchError( (error, caught) => {
+          this.handleError<Olympic>(`getHero id=${index}`, error);
+          return caught;
+        }
       ));
+
   }
 
 
@@ -58,13 +51,10 @@ export class OlympicService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
+      console.log(`${operation} failed: ${error.message}`);
+      this.olympics$.unsubscribe();
+      this.router.navigateByUrl("/not-found").then(r => console.log("OlympicServiceComponent: call not-found result : ", r));
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };

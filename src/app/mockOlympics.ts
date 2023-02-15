@@ -1,4 +1,4 @@
-import {Olympic} from "./core/models/Olympic";
+import {Olympic} from "./core/models/dataset/Olympic";
 
 export const OLYMPICS: Olympic[] = [
   {
