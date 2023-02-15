@@ -1,3 +1,16 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<div class="flex justify-content-center">
+  <div class="flex flex-column align-items-center">
+    <div class="title-card flex text-3xl md:text-6xl">Medals per Country</div>
+      <div class="flex flex-row justify-content-center card-container">
+        <div class="sub-card text-lg md:text-2xl flex flex-shrink-1 sm:flex-shrink-0 flex-grow-1 flex-column align-items-center justify-content-center">
+          <div class="flex-1 align-items-center sub-card-title">Number of JOs</div>
+          <div class="flex-1 sub-card-value">{{joCount}}</div>
+        </div>
+        <div class="sub-card text-lg md:text-2xl flex flex-shrink-1 sm:flex-shrink-0 flex-grow-1 flex-column align-items-center justify-content-center">
+          <div class="flex-1 sub-card-title">Number of countries</div>
+          <div class="flex-1 sub-card-value">{{countryCount}}</div>
+        </div>
+      </div>
+    <p-chart class="pie-chart" type="pie" [data]="data" [options]="options" (onDataSelect)="getCountry($event)"></p-chart>
+  </div>
+</div>

@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
+import {ChartModule} from "primeng/chart";
+import {CardModule} from 'primeng/card';
+
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, CountryDetailComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ChartModule, CardModule],
   providers: [],
   bootstrap: [AppComponent],
 })
