@@ -40,8 +40,6 @@ export class OlympicService {
       ));
 
   }
-
-
   /**
    * Handle Http operation that failed.
    * Let the app continue.
