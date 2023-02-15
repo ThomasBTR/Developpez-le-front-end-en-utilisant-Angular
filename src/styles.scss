@@ -1,15 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 @import "primeflex/primeflex.min.css";
 @import "primeicons/primeicons.css";
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.min.css";
 
 .title-card {
-  //height: 8vh;
-  //width: 20vw;
   background: #04838f;
   margin: 1% 2%;
-  font-weight: bolder;
+  font-weight: bold;
   color: white;
   border-radius: 5%;
   padding: 2% 2%;
@@ -23,25 +20,23 @@
   margin: 2%;
   padding: 5%;
   text-align:center;
-  //white-space: nowrap;
 }
 sub-card-title{
   text-size-adjust: auto;
   color: #727272;
 }
 .sub-card-value{
-  //text-size-adjust: auto;
   color: black;
   font-weight: bold;
 }
 
 .pie-chart{
   width: 40vw;
-  height: 60vh;
+  height: 50vh;
 }
 
 .bar-chart{
   width: 60vw;
-  height: 65vh;
+  height: 60vh;
 }
 

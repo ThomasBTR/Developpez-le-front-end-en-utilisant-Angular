@@ -34,13 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // private log(message: string) {
-  //   this.messageService.add(`HomeComponent: ${message}`);
-  // }
-
   getOlympics(): Subscription {
-    // async with Observable
-    // this.log('gathering olympics from service');
     this.options = {
       plugins: {
         legend: {
