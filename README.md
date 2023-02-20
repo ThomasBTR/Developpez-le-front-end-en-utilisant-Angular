@@ -5,7 +5,7 @@
 
 # Olympic Games Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5, [Node](https://nodejs.org/en/) version 18.14.0 LTS, [npm](https://www.npmjs.com/package/npm) 9.3.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5, [Node](https://nodejs.org/en/) version 18.14.0 LTS, [npm](https://www.npmjs.com/package/npm) 9.5.0.
 
 Don't forget to install your node_modules before starting (`npm install`).
 
