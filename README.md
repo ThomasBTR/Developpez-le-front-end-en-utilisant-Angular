@@ -1,11 +1,19 @@
 <img alt="angular" src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white">  <img alt="npm" src="https://img.shields.io/npm/v/npm"> <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/ThomasBTR/Developpez-le-front-end-en-utilisant-Angular"><br>
 <img alt="npm current version" src="https://img.shields.io/github/release/ThomasBTR/Developpez-le-front-end-en-utilisant-Angular.svg">
 
-
-
 # Olympic Games Starter
+### Homepage view
+![homepage.png](doc/homepage.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5, [Node](https://nodejs.org/en/) version 18.14.0 LTS, [npm](https://www.npmjs.com/package/npm) 9.3.1.
+### Detail view
+![detail-page.png](doc/detail-page.png)
+
+## Not-found view
+![not-found.png](doc/not-found.png)
+
+
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5, [Node](https://nodejs.org/en/) version 18.14.0 LTS, [npm](https://www.npmjs.com/package/npm) 9.5.0.
 
 Don't forget to install your node_modules before starting (`npm install`).
 
@@ -43,5 +51,3 @@ As of the architecture already defined at project startup, the current release i
 * [Primeng](https://primeng.org/) is used for the visual charts of the application. <br>
 * [PrimeFlex](https://www.primefaces.org/primeflex/) is used for the other layout of the application. <br>
 
-
-*
